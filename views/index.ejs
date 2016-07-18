@@ -11,9 +11,12 @@
 
   <!-- services -->
   <script src="/javascripts/services/postFactory.js"></script>
+  <script src="/javascripts/services/authFactory.js"></script>
   <!-- controllers -->
   <script src="/javascripts/controllers/mainController.js"></script>
   <script src="/javascripts/controllers/postsController.js"></script>
+  <script src="/javascripts/controllers/navController.js"></script>
+  <script src="/javascripts/controllers/authController.js"></script>
 
   <style> .glyphicon-thumbs-up { cursor:pointer } </style>
 </head>
@@ -23,6 +26,15 @@
   <div class="page-header">
     <h1>Flapper News</h1>
   </div>
+
+  <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
+    <ul class="nav navbar-nav">
+      <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+      <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+      <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+      <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
+    </ul>
+  </nav>
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3">

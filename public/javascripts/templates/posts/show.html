@@ -10,15 +10,20 @@
 
 <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
 <span class="glyphicon glyphicon-thumbs-up"
-  ng-click="incrementUpvotes(comment)"></span>
+      ng-click="incrementUpvotes(comment)"></span>
 {{comment.upvotes}} - by {{comment.author}}
 <span style="font-size:20px; margin-left:10px;">
   {{comment.body}}
 </span>
 </div>
 
+<div ng-hide="isLoggedIn()">
+  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+</div>
+
 <form ng-submit="addComment()"
-style="margin-top:30px;">
+      ng-show="isLoggedIn()"
+      style="margin-top:30px;">
 <h3>Add a new Comment</h3>
 
 <div class="form-group">

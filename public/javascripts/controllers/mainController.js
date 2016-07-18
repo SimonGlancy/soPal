@@ -1,15 +1,20 @@
 app.controller('MainCtrl', [
-'$scope','postFactory',
-function($scope, postFactory){
+'$scope','postFactory', 'auth',
+function($scope, postFactory,auth){
 
   $scope.posts = postFactory.posts;
+  $scope.isLoggedIn = auth.isLoggedIn;
 
+  var length = $scope.posts.length
+
+
+  console.log($scope.posts[length -1])
 
   $scope.addPost = function() {
     if(!$scope.title || $scope.title === '') { return; }
     postFactory.create({
       title: $scope.title,
-      link: $scope.link,
+      link: $scope.link
       })
     $scope.title = '';
     $scope.link = '';

@@ -23,7 +23,27 @@ function($stateProvider, $urlRouterProvider) {
             return postFactory.get($stateParams.id);
           }]
         }
-    	});
+    	})
+    .state('login', {
+      url: '/login',
+      templateUrl: '/javascripts/templates/users/login.html',
+      controller: 'AuthCtrl',
+      onEnter: ['$state', 'auth', function($state, auth){
+        if(auth.isLoggedIn()){
+          $state.go('home');
+        }
+      }]
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: '/javascripts/templates/users/register.html',
+      controller: 'AuthCtrl',
+      onEnter: ['$state', 'auth', function($state, auth){
+        if(auth.isLoggedIn()){
+          $state.go('home');
+        }
+      }]
+    })
 
   $urlRouterProvider.otherwise('home');
 }])
