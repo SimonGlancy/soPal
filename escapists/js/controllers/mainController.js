@@ -14,6 +14,6 @@ function($scope, instaFactory, $http, $window, $document, $interval){
     $interval(backgroundChanger, interval)
   }
 
-  // $scope.runBackgroundChange(800, 3);
+  $scope.runBackgroundChange(800, 3);
 
 }])

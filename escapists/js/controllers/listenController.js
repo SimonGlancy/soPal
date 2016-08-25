@@ -3,16 +3,42 @@ app.controller('ListenCtrl', [
 function($scope, $http, spotifyService, ngAudio){
   var self = this ;
 
-  $scope.albums = spotifyService.albums.sort(function(a,b){
-    return b.date - a.date;
-  })
+
   $scope.artist = "E S C A P I S T S"
   $scope.faceUp = true;
   $scope.playing = false;
   $scope.currentSong = "";
 
-  $scope.getAlbums = function() {
-    spotifyService.getAlbums();
+
+  self.init = function(){
+    self.getAlbums().then(function(data){
+      self.getAllAlbumDetails();
+    })
+  }
+
+
+
+  self.getAlbums = function() {
+    return spotifyService.getAlbums().then(function(res){
+      $scope.albums = (res.data.items);
+      // self.getDates();
+      // self.sortForDates();
+
+    })
+  }
+
+  self.getAlbumDetails = function(index) {
+    return spotifyService.getAlbumDetails($scope.albums[index].id)
+    .then(function(res){
+      $scope.albums[index] = res.data
+      $scope.albums[index].date = new Date(res.data.release_date)
+    })
+  }
+
+  self.getAllAlbumDetails = function() {
+    for (i = 0; i < $scope.albums.length; i++) {
+      self.getAlbumDetails(i);
+    }
   }
 
   $scope.playSong = function(previewUrl) {
@@ -24,12 +50,14 @@ function($scope, $http, spotifyService, ngAudio){
     $scope.currentSong.pause()
   }
 
-  $scope.sortForDates = function() {
+  self.sortForDates = function() {
     $scope.albums.sort(function(a,b){
       return b.date - a.date;
     })
   }
 
-  $scope.getAlbums()
+  self.init();
+
+  // $scope.getAlbums();
 
 }])

@@ -3,26 +3,32 @@ app.controller('LiveCtrl', [
 '$scope', '$http', 'songKickService',
 function($scope, $http, songKickService){
 
-  $scope.upcomingShows = songKickService.upcomingShows;
-  $scope.pastShows = songKickService.pastShows;
+
   $scope.showUpcoming = false;
   $scope.showPast = false;
+  var self = this;
 
   $scope.getPastShows = function(){
-    songKickService.getPastShows();
-    $scope.pastShows = songKickService.pastShows;
-  }
+    songKickService.getPastShows(function(res){
+      $scope.pastShows = self.accountForNoEntries(res);
+    });
+  };
 
   $scope.getUpcomingShows = function(){
-    songKickService.getUpcomingShows();
-    $scope.upcomingShows = songKickService.upcomingShows;
+    songKickService.getUpcomingShows(function(res){
+      $scope.upcomingShows = self.accountForNoEntries(res)
+    });
   }
 
   $scope.parseDateData = function(data){
     var date = new Date(data)
-    // var dateString = date.getDate + " " +
     return date.toDateString();
   }
+
+  self.accountForNoEntries = function(res){
+    var outPut = res.resultsPage
+    return outPut === undefined ? [] : outPut.results.event.reverse();
+  };
 
   $scope.getPastShows();
   $scope.getUpcomingShows();

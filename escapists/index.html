@@ -3,6 +3,10 @@
 <head>
   <link rel='stylesheet' type='text/css' href='styles/reset.css'></link>
   <link rel='stylesheet' type='text/css' href='styles/style.css'></link>
+  <link rel='stylesheet' type='text/css' href='styles/joinStyle.css'></link>
+  <link rel='stylesheet' type='text/css' href='styles/listenStyle.css'></link>
+  <link rel='stylesheet' type='text/css' href='styles/liveStyle.css'></link>
+  <link rel='stylesheet' type='text/css' href='styles/lookStyle.css'></link>
   <link href="http://allfont.net/allfont.css?fonts=impact-label-reversed" rel="stylesheet" type="text/css" />
   <!-- Scripts -->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
@@ -19,6 +23,9 @@
   <script src="js/controllers/lookController.js"></script>
   <script src="js/controllers/listenController.js"></script>
   <script src="js/controllers/liveController.js"></script>
+  <script src="js/controllers/joinController.js"></script>
+  <!-- filters -->
+  <script src="js/filters/dateFilter.js"></script>
   <title>E S C A P I S T S </title>
   <base href="/">
 </head>
@@ -29,12 +36,12 @@
   <div class="header-container">
     <a ui-sref="home" class="escapists-header">ESCAPISTS</a>
     <div class="icons-container">
-      <a class="icon" href="https://twitter.com/escapistsmusic"><img class="twitter" src="escapists/styles/images/icons/twitter-circle-icon-black.png"></a>
-      <a class="icon" href="https://www.instagram.com/escapistsmusic/?hl=en"><img class="instagram" src="escapists/styles/images/icons/instagram_circle_black-128.png"></a>
-      <a class="icon" href="https://www.facebook.com/ESCAPISTSmusic/"><img class="facebook" src="escapists/styles/images/icons/facebook-4-xxl.png"></a>
-      <a class="icon" href="https://play.spotify.com/artist/5hp8GdfyyLzroKRVdEfiDO"><img class="spotify" src="escapists/styles/images/icons/spotify-icon.png"></a>
-      <a class="icon" href="https://www.youtube.com/channel/UCERFP94irC-fFWQH1QzMiIA"><img class="youtube" src="escapists/styles/images/icons/youtube_circle.png"></a>
-      <a class="icon" href="https://itunes.apple.com/gb/artist/escapists/id465211416"><img class="itunes" src="escapists/styles/images/icons/itunes-icon.png"></a>
+      <a class="icon" href="https://twitter.com/escapistsmusic"><img class="twitter" src="styles/images/icons/twitter-circle-icon-black.png"></a>
+      <a class="icon" href="https://www.instagram.com/escapistsmusic/?hl=en"><img class="instagram" src="styles/images/icons/instagram_circle_black-128.png"></a>
+      <a class="icon" href="https://www.facebook.com/ESCAPISTSmusic/"><img class="facebook" src="styles/images/icons/facebook-4-xxl.png"></a>
+      <a class="icon" href="https://play.spotify.com/artist/5hp8GdfyyLzroKRVdEfiDO"><img class="spotify" src="styles/images/icons/spotify-icon.png"></a>
+      <a class="icon" href="https://www.youtube.com/channel/UCERFP94irC-fFWQH1QzMiIA"><img class="youtube" src="styles/images/icons/youtube_circle.png"></a>
+      <a class="icon" href="https://itunes.apple.com/gb/artist/escapists/id465211416"><img class="itunes" src="styles/images/icons/itunes-icon.png"></a>
     </div>
   </div>
 
@@ -43,7 +50,7 @@
       <input type="submit" class="nav-button" value="L O O K" ui-sref="look">
       <input type="submit"class="nav-button" value="L I S T E N" ui-sref="listen">
       <input type="submit" class="nav-button" value="L I V E" ui-sref="live">
-      <input type="submit" class="nav-button" value="J O I N">
+      <input type="submit" class="nav-button" value="J O I N" ui-sref="join">
       <input type="submit" class="nav-button" value="S T O R E" onClick="window.open('https://escapists.bandcamp.com/merch')">
 
 

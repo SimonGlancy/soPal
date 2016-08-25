@@ -6,10 +6,10 @@ app.service('instaFactory', ['$http', function($http){
   var self = this;
   self.posts = [];
 
-  this.get = function() {
+  this.get = function(callback) {
     $http.jsonp(url).success(function(res){
-      self.posts = res.data;
-    })
-  }
+      callback(res);
+    });
+  };
 
 }])

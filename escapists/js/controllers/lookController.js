@@ -8,8 +8,9 @@ function($scope, instaFactory, $interval){
   $scope.artist = "E S C A P I S T S"
 
   $scope.getPosts = function(){
-    instaFactory.get()
-    $scope.posts = instaFactory.posts
+    instaFactory.get(function(res){
+      $scope.posts = res.data;
+    });
   }
 
   $scope.getLikes = function(){

@@ -9,20 +9,17 @@ app.service('songKickService', ['$http', function($http){
   self.pastShows = [];
   self.upcomingShows = [];
 
-  self.getPastShows = function(){
-    $http.get(pastShowsURL).then(function(res){
-      self.pastShows = self.accountForNoEntries(res.data.resultsPage);
+  self.getPastShows = function(callback){
+    $http.get(pastShowsURL).success(function(res){
+      callback(res);
     });
   };
 
-  self.getUpcomingShows = function(){
+  self.getUpcomingShows = function(callback){
     $http.get(upcomingShowsURL).then(function(res){
-      self.pastShows = self.accountForNoEntries(res.data.resultsPage);
+      callback(res);
     });
   };
 
-  self.accountForNoEntries = function(data){
-    return data.totalEntries === 0 ? [] : data.results.event.reverse();
-  };
 
 }]);

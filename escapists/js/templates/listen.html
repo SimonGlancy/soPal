@@ -1,6 +1,6 @@
 
 <div class="spotify-display"  >
-  <div  ng-repeat="album in albums | orderBy: -date">
+  <div  ng-repeat="album in albums">
     <div class="spotify-container" ng-click="faceUp = !faceUp", ng-show="faceUp">
         <img class="spotify-image" src="{{ album.images[0].url }}" href="{{ album.external_urls.spotify }}">
         <!-- <input type="submit" class="nav-button" value="S O N G S" ng-click='getSongs($index)'> -->
@@ -21,8 +21,8 @@
           {{ track.name }}
           </div>
           <div class="spotify-track-controls">
-            <img class="play-button" ng-hide="playing" ng-click="playing = !playing; playSong(track.preview_url)" src="escapists/styles/images/icons/play-button.png">
-            <img class="pause-button" ng-show="playing" ng-click="playing = !playing; pauseSong(track.preview_url)" src="escapists/styles/images/icons/pause-button.png">
+            <img class="play-button" ng-hide="playing" ng-click="playing = !playing; playSong(track.preview_url)" src="styles/images/icons/play-button.png">
+            <img class="pause-button" ng-show="playing" ng-click="playing = !playing; pauseSong(track.preview_url)" src="styles/images/icons/pause-button.png">
           </div>
         </div>
       </div>
