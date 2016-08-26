@@ -26,19 +26,6 @@ function($scope, instaFactory, $interval){
     $scope.posts[index].likes.count -= 1
   }
 
-
-  $scope.runBackgroundChange = function(interval,frames) {
-    var int = 1;
-
-    function backgroundChanger() {
-        $document[0].body.id = "background"+int;
-        int++;
-        if(int === frames) { int = 1; }
-    }
-
-    $interval(backgroundChanger, interval)
-  }
-
   $scope.getPosts();
-  // $scope.runBackgroundChange(800, 3);
+
 }])
