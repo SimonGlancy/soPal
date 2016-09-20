@@ -1,12 +1,12 @@
 {
   "name": "escapists",
-  "description": "website for the band escapists",
+  "description": "population calculator",
   "main": "app.js",
   "authors": [
     "Simon T Glancy <si.glancy@gmail.com>"
   ],
   "license": "MIT",
-  "homepage": "www.escapistsmusic.com",
+  "homepage": "si.glancy@gmail.com",
   "ignore": [
     "**/.*",
     "node_modules",
